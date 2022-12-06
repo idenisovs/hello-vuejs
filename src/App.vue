@@ -1,31 +1,52 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <v-app>
+    <v-app-bar>
+      <template v-slot:prepend>
+        <v-app-bar-title>
+          ToDo
+        </v-app-bar-title>
+      </template>
+
+      <v-spacer></v-spacer>
+
+      <v-btn>
+        LV
+      </v-btn>
+
+      <v-btn @click="changeTheme">
+        <v-icon icon="nights_stay" />
+      </v-btn>
+    </v-app-bar>
+
+    <v-main>
+      <div>
+        My name is {{name}}
+      </div>
+      <div>
+        Current theme is: {{theme}}
+      </div>
+    </v-main>
+  </v-app>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<script lang="ts">
+  import { defineComponent, ref } from 'vue'
+
+  const theme = ref('light')
+
+  export default defineComponent({
+    props: {
+      name: { type: String, required: false, default: 'Hello World' }
+    },
+    data: () => ({
+      drawer: false,
+      theme: theme.value
+    }),
+    methods: {
+      changeTheme() {
+        theme.value = theme.value === 'light' ? 'dark': 'light';
+      }
+    },
+    mounted() {}
+  })
+</script>
