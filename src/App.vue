@@ -9,13 +9,11 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn>
+      <v-btn variant="flat">
         LV
       </v-btn>
 
-      <v-btn @click="changeTheme">
-        <v-icon icon="nights_stay" />
-      </v-btn>
+      <v-btn icon="nights_stay" @click="changeTheme"></v-btn>
     </v-app-bar>
 
     <v-main>
