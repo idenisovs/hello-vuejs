@@ -4,8 +4,7 @@ import { vuetify, pinia } from './plugins';
 
 import App from './App.vue';
 
-import './style.css';
-
+import './style.scss';
 
 const app = createApp(App);
 
