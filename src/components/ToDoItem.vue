@@ -1,22 +1,29 @@
 <script setup lang="ts">
+    import { ref } from 'vue';
     import { ToDo } from '../dtos';
 
-    defineProps<{
+    const props = defineProps<{
         idx: number;
         todo: ToDo;
     }>();
 
     defineEmits<{
-        (e: 'remove', item: ToDo): void
+        (e: 'remove', item: ToDo): void;
     }>();
+
+    const isSelected = ref(false);
+
+    function handleCheckboxClick() {
+        isSelected.value = !isSelected.value;
+    }
 </script>
 
 <template>
     <v-card class="mb-4">
         <v-card-text>
             <div class="d-flex align-center">
-                <v-checkbox density="compact" hide-details class="flex-grow-0 mr-4" color="primary"></v-checkbox>
-                <span class="flex-grow-1">
+                <v-checkbox density="compact" hide-details class="flex-grow-0 mr-4" color="primary" @click="handleCheckboxClick"></v-checkbox>
+                <span class="flex-grow-1" :class="{ 'text-decoration-line-through': isSelected }">
                     {{idx}}. {{todo.title}}
                 </span>
                 <span class="d-flex">
