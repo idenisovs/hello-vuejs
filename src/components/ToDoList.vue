@@ -7,5 +7,5 @@
 </script>
 
 <template>
-    <ToDoItem message="message" />
+    <ToDoItem :message="message" />
 </template>
