@@ -3,18 +3,22 @@
 
   import { ToDoAdd, ToDoList, NavBar } from './components';
 
-  import { useSettingsStore } from './store/use-settings-store';
+  import { useSettingsStore, useToDoListStore } from './store';
   
   const settings = useSettingsStore();
+  const todos = useToDoListStore();
+
+  todos.requestToDoList();
 </script>
 
 <template>
-  <v-app id="inspire" :theme="settings.theme.name" class="todo-app">
+  <v-app id="inspire" class="todo-app" :theme="settings.theme.name">
     <NavBar />
 
-    <v-main class="todo-main">
+    <v-main class="todo-main" >
       <ToDoAdd />
-      <ToDoList />
+      <v-progress-linear v-if="todos.isLoading" color="#00bcd4" indeterminate :height="12"></v-progress-linear>
+      <ToDoList v-else />
     </v-main>
   </v-app>
 </template>

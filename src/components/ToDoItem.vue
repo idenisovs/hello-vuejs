@@ -1,6 +1,8 @@
 <script setup lang="ts">
+    import { ToDo } from '../dtos';
+
     defineProps<{
-        message: string;
+        todo: ToDo
     }>();
 </script>
 
@@ -8,8 +10,10 @@
     <v-card class="mb-4">
         <v-card-text>
             <div class="d-flex align-center">
-                <v-checkbox density="compact" hide-details class="mr-4"></v-checkbox>
-                <span>{{message}}</span>
+                <v-checkbox density="compact" hide-details class="flex-grow-0 mr-4" color="primary"></v-checkbox>
+                <span class="flex-grow-1">
+                    {{todo.title}}
+                </span>
                 <span class="d-flex">
                     <v-btn icon="edit" variant="plain" size="small" />
                     <v-btn icon="delete" variant="plain" size="small" />

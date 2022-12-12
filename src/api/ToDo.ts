@@ -10,6 +10,8 @@ export class ToDo {
                     { id: 7463, userId: 1, title: 'Hello world 3!' },
                     { id: 4267, userId: 1, title: 'Hello world 4!' }
                 ];
+
+                resolve(result);
             }, 2345);
         });
     }

@@ -2,13 +2,11 @@
     import { ref } from 'vue';
 
     import ToDoItem from './ToDoItem.vue';
+    import { useToDoListStore  } from '../store';
 
-    const message = ref('Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!');
+    const todos = useToDoListStore();
 </script>
 
 <template>
-    <ToDoItem :message="message" />
-    <ToDoItem :message="message" />
-    <ToDoItem :message="message" />
-    <ToDoItem :message="message" />
+    <ToDoItem v-for="todo in todos.todos" :todo="todo" />
 </template>
