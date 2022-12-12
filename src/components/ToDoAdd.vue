@@ -14,7 +14,7 @@
     <div class="todo-add">
         <v-text-field variant="solo" type="input" class="mr-5"></v-text-field>
         <v-btn color="primary" class="add-btn">
-            Click Me
+            Add ToDo
         </v-btn>
     </div>
 </template>
