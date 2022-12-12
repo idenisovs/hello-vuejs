@@ -8,4 +8,7 @@
 
 <template>
     <ToDoItem :message="message" />
+    <ToDoItem :message="message" />
+    <ToDoItem :message="message" />
+    <ToDoItem :message="message" />
 </template>
