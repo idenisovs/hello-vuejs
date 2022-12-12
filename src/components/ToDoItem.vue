@@ -7,14 +7,22 @@
         todo: ToDo;
     }>();
 
-    defineEmits<{
+    const emit = defineEmits<{
         (e: 'remove', item: ToDo): void;
+        (e: 'select', item: ToDo): void;
+        (e: 'deselect', item: ToDo): void;
     }>();
 
     const isSelected = ref(false);
 
     function handleCheckboxClick() {
         isSelected.value = !isSelected.value;
+
+        if (isSelected.value) {
+            emit('select', props.todo);
+        } else {
+            emit('deselect', props.todo);
+        }
     }
 </script>
 
