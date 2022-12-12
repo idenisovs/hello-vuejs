@@ -1,5 +1,5 @@
+import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import { ref, reactive } from 'vue';
 
 import ThemeStorage from './theme-storage';
 import LanguageStorage from './language-storage';
