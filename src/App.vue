@@ -14,6 +14,7 @@
 
     <v-main class="todo-main">
       <ToDoAdd />
+      <ToDoList />
     </v-main>
   </v-app>
 </template>
