@@ -3,9 +3,9 @@
 
   import ButtonCounter from './components/ButtonCounter.vue';
   import NavBar from './components/NavBar.vue';
-  import { useSettingsStore } from './store/use-settings-store';
+  import ToDoAdd from './components/TodoAdd.vue';
 
-  
+  import { useSettingsStore } from './store/use-settings-store';
   
   const settings = useSettingsStore();
 </script>
@@ -14,20 +14,8 @@
   <v-app id="inspire" :theme="settings.theme.name" class="todo-app">
     <NavBar />
 
-    <v-main>
-      <v-container>
-        <v-text-field placeholder="What needs to be done?" variant="solo" />
-        <v-btn color="primary">
-          Add ToDo
-        </v-btn>
-      </v-container>
-      
+    <v-main class="todo-main">
+      <ToDoAdd />
     </v-main>
   </v-app>
 </template>
-
-<style>
-.todo-app {
-  background-color: #f1f1f1 !important;
-}
-</style>
