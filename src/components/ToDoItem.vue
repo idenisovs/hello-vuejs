@@ -2,7 +2,11 @@
     import { ToDo } from '../dtos';
 
     defineProps<{
-        todo: ToDo
+        todo: ToDo;
+    }>();
+
+    defineEmits<{
+        (e: 'remove', item: ToDo): void
     }>();
 </script>
 
@@ -16,7 +20,7 @@
                 </span>
                 <span class="d-flex">
                     <v-btn icon="edit" variant="plain" size="small" />
-                    <v-btn icon="delete" variant="plain" size="small" />
+                    <v-btn icon="delete" variant="plain" size="small" @click="$emit('remove', todo)" />
                 </span>
             </div>
         </v-card-text>
