@@ -2,6 +2,7 @@
     import { ToDo } from '../dtos';
 
     defineProps<{
+        idx: number;
         todo: ToDo;
     }>();
 
@@ -16,7 +17,7 @@
             <div class="d-flex align-center">
                 <v-checkbox density="compact" hide-details class="flex-grow-0 mr-4" color="primary"></v-checkbox>
                 <span class="flex-grow-1">
-                    {{todo.title}}
+                    {{idx}}. {{todo.title}}
                 </span>
                 <span class="d-flex">
                     <v-btn icon="edit" variant="plain" size="small" />

@@ -9,5 +9,5 @@
 </script>
 
 <template>
-    <ToDoItem v-for="todo in todos.list" :todo="todo" />
+    <ToDoItem v-for="(item, index) in todos.list" :idx="todos.list.length - index" :todo="item" />
 </template>
