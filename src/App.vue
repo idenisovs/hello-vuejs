@@ -1,9 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue';
 
-  import ButtonCounter from './components/ButtonCounter.vue';
-  import NavBar from './components/NavBar.vue';
-  import ToDoAdd from './components/TodoAdd.vue';
+  import { ToDoAdd, ToDoList, NavBar } from './components';
 
   import { useSettingsStore } from './store/use-settings-store';
   

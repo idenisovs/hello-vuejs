@@ -3,8 +3,6 @@
     display: flex;
     margin-bottom: 30px;
     margin-top: 50px;
-
-    
 }
 
 .todo-add .add-btn {
