@@ -10,10 +10,4 @@ export class ToDo {
 
         return todos;
     }
-
-    static create() {}
-
-    static edit() {}
-
-    static remove() {}
 }
