@@ -26,9 +26,12 @@ export const useToDoListStore = defineStore('todo-list', () => {
             return;
         }
 
-        deselect(todo);
-        
         list.value.splice(idx, 1);
+    }
+
+    function removeAndDeselect(todo: ToDo) {
+        remove(todo);
+        deselect(todo);
     }
 
     function select(todo: ToDo) {
@@ -48,5 +51,5 @@ export const useToDoListStore = defineStore('todo-list', () => {
         selected.value = [];
     }
 
-    return { isLoading, list, selected, requestToDoList, remove, select, deselect, removeSelected };
+    return { isLoading, list, selected, requestToDoList, remove: removeAndDeselect, select, deselect, removeSelected };
 });
