@@ -8,8 +8,9 @@
         todo: ToDo;
     }>();
 
-    defineEmits<{
+    const emit = defineEmits<{
         (e: 'remove', item: ToDo): void;
+        (e: 'changes', item: ToDo): void;
     }>();
 
     const isEditMode = ref(false);
@@ -17,13 +18,23 @@
     function toggleEditMode() {
         isEditMode.value = !isEditMode.value;
     }
+
+    function toggleToDoCompleted() {
+        const changedToDo = {
+            ...props.todo
+        };
+
+        changedToDo.completed = !changedToDo.completed;
+
+        emit('changes', changedToDo);
+    }
 </script>
 
 <template>
     <v-card class="mb-4">
         <v-card-text>
             <div class="d-flex align-center">
-                <v-checkbox density="compact" hide-details class="flex-grow-0 mr-4" color="primary" v-model="todo.completed"></v-checkbox>
+                <v-checkbox density="compact" hide-details class="flex-grow-0 mr-4" color="primary" :model-value="todo.completed" @click="toggleToDoCompleted()"></v-checkbox>
                 
                 <v-text-field 
                     v-if="isEditMode" 

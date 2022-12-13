@@ -33,6 +33,12 @@ export const useToDoListStore = defineStore('todo-list', () => {
         });
     }
 
+    function change(changedToDo: ToDo) {
+        const idx = list.value.findIndex((item) => item.id === changedToDo.id);
+
+        list.value[idx] = changedToDo;
+    }
+
     function remove(todo: ToDo) {
         const idx = list.value.findIndex((item) => item.id === todo.id);
 
@@ -54,5 +60,5 @@ export const useToDoListStore = defineStore('todo-list', () => {
         return Math.max(...ids) + 1;
     }
 
-    return { isLoading, list, selected, requestToDoList, remove, removeSelected, create };
+    return { isLoading, list, selected, requestToDoList, change, remove, removeSelected, create };
 });

@@ -1,9 +1,6 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
-
     import ToDoItem from './ToDoItem.vue';
     import { useToDoListStore  } from '../store';
-    import { ToDo } from '../dtos';
 
     const todos = useToDoListStore();
 </script>
@@ -12,7 +9,8 @@
     <ToDoItem v-for="(item, index) in todos.list" 
         :key="item.id"
         :idx="todos.list.length - index" 
-        :todo="item" 
+        :todo="item"
+        @changes="todos.change"
         @remove="todos.remove"
     />
 
