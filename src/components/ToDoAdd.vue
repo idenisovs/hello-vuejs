@@ -7,6 +7,10 @@ const todos = useToDoListStore();
 const toDoText = ref('');
 
 function createToDo() {
+    if (!toDoText.value.length) {
+        return;
+    }
+
     todos.create(toDoText.value);
     toDoText.value = '';
 }
@@ -14,7 +18,7 @@ function createToDo() {
 
 <template>
     <div class="todo-add">
-        <v-text-field variant="solo" type="input" placeholder="What needs to be done?" class="mr-5" v-model="toDoText"></v-text-field>
+        <v-text-field variant="solo" type="input" placeholder="What needs to be done?" class="mr-5" v-model="toDoText" @keyup.enter="createToDo"></v-text-field>
         <v-btn color="primary" class="add-btn" :disabled="!toDoText.length" @click="createToDo">
             Add ToDo
         </v-btn>
