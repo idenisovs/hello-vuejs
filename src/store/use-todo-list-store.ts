@@ -8,6 +8,7 @@ export const useToDoListStore = defineStore('todo-list', () => {
     const isLoading = ref(false);
 
     const list = ref<ToDo[]>([]);
+    const selected = ref<ToDo[]>([])
 
     function requestToDoList() {
         isLoading.value = true;
@@ -25,8 +26,27 @@ export const useToDoListStore = defineStore('todo-list', () => {
             return;
         }
 
+        deselect(todo);
+        
         list.value.splice(idx, 1);
     }
 
-    return { isLoading, list, requestToDoList, remove };
+    function select(todo: ToDo) {
+        selected.value.push(todo);
+    }
+
+    function deselect(todo: ToDo) {
+        const idx = selected.value.findIndex((item) => item.id === todo.id);
+
+        if (idx > -1) {
+            selected.value.splice(idx, 1);
+        }
+    }
+
+    function removeSelected() {
+        selected.value.forEach(remove);
+        selected.value = [];
+    }
+
+    return { isLoading, list, selected, requestToDoList, remove, select, deselect, removeSelected };
 });
