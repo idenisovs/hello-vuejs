@@ -1,0 +1,5 @@
+{
+    "add-todo": "Add ToDo",
+    "add-todo-placeholder": "What need to be done?",
+    "remove-multiple-todos": "Delete selected ({count})"
+}

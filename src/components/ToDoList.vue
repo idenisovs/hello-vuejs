@@ -17,7 +17,7 @@
     />
 
     <v-btn block color="primary" class="delete-btn mt-10" v-if="todos.selected > 1" @click="todos.removeSelected">
-        Delete selected ({{todos.selected}})
+        {{$t('remove-multiple-todos', { count: todos.selected })}}
     </v-btn>
 </template>
 

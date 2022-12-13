@@ -1,0 +1,5 @@
+{
+    "add-todo": "Pievienot",
+    "add-todo-placeholder": "Kas šodien jāizdara?",
+    "remove-multiple-todos": "Dzēst atzīmētos ({count})"
+}
