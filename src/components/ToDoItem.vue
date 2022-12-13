@@ -14,8 +14,8 @@
 
     const isEditMode = ref(false);
 
-    function update() {
-        isEditMode.value = false
+    function toggleEditMode() {
+        isEditMode.value = !isEditMode.value;
     }
 </script>
 
@@ -32,16 +32,17 @@
                     hide-details 
                     single-line
                     v-model="todo.title"
-                    @keyup.enter="update"
+                    @keyup.enter="toggleEditMode"
+                    
                 >
                 </v-text-field>
                 
-                <span class="flex-grow-1" :class="{ 'text-decoration-line-through': todo.completed }"  v-else>
+                <span v-else class="flex-grow-1" :class="{ 'text-decoration-line-through': todo.completed }" @dblclick="toggleEditMode">
                     {{todo.id}}. {{todo.title}}
                 </span>
                 
                 <span class="d-flex">
-                    <v-btn icon="edit" variant="plain" size="small" @click="isEditMode = !isEditMode" />
+                    <v-btn icon="edit" variant="plain" size="small" @click="toggleEditMode" />
                     <v-btn icon="delete" variant="plain" size="small" @click="$emit('remove', todo)" />
                 </span>
             </div>
