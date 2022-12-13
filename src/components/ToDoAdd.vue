@@ -19,8 +19,18 @@ function createToDo() {
 </script>
 
 <template>
-    <div class="todo-add">
-        <v-text-field variant="solo" type="input" :placeholder="t('add-todo-placeholder')" class="mr-5" v-model="toDoText" @keyup.enter="createToDo"></v-text-field>
+    <div class="todo-add d-flex flex-column flex-sm-row">
+        <v-text-field 
+            variant="solo" 
+            type="input" 
+            :placeholder="t('add-todo-placeholder')" 
+            hide-details
+            class="mb-5 mb-sm-0 mr-0 mr-sm-2 mr-md-5" 
+            v-model="toDoText" 
+            @keyup.enter="createToDo"
+        >
+        </v-text-field>
+
         <v-btn color="primary" class="add-btn" :disabled="!toDoText.length" @click="createToDo">
             {{t('add-todo')}}
         </v-btn>
@@ -29,7 +39,6 @@ function createToDo() {
 
 <style scoped>
 .todo-add {
-    display: flex;
     margin-bottom: 30px;
     margin-top: 50px;
 }
