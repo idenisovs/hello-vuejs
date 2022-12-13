@@ -1,3 +1,26 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+
+import { useToDoListStore  } from '../store';
+
+const todos = useToDoListStore();
+const toDoText = ref('');
+
+function createToDo() {
+    todos.create(toDoText.value);
+    toDoText.value = '';
+}
+</script>
+
+<template>
+    <div class="todo-add">
+        <v-text-field variant="solo" type="input" placeholder="What needs to be done?" class="mr-5" v-model="toDoText"></v-text-field>
+        <v-btn color="primary" class="add-btn" :disabled="!toDoText.length" @click="createToDo">
+            Add ToDo
+        </v-btn>
+    </div>
+</template>
+
 <style scoped>
 .todo-add {
     display: flex;
@@ -9,13 +32,3 @@
     height: 56px;
 }
 </style>
-
-<template>
-    <div class="todo-add">
-        <v-text-field variant="solo" type="input" class="mr-5"></v-text-field>
-        <v-btn color="primary" class="add-btn">
-            Add ToDo
-        </v-btn>
-    </div>
-</template>
-

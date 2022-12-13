@@ -24,6 +24,15 @@ export const useToDoListStore = defineStore('todo-list', () => {
         });
     }
 
+    function create(title: string) {
+        list.value.unshift({
+            id: getNextId(),
+            userId: 1,
+            title,
+            completed: false
+        });
+    }
+
     function remove(todo: ToDo) {
         const idx = list.value.findIndex((item) => item.id === todo.id);
 
@@ -38,5 +47,12 @@ export const useToDoListStore = defineStore('todo-list', () => {
         list.value = list.value.filter((item) => !item.completed);
     }
 
-    return { isLoading, list, selected, requestToDoList, remove, removeSelected };
+    function getNextId(): number {
+        // I know that`s bad idea
+        const ids = list.value.map(todo => todo.id);
+
+        return Math.max(...ids) + 1;
+    }
+
+    return { isLoading, list, selected, requestToDoList, remove, removeSelected, create };
 });
