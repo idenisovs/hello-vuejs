@@ -1,19 +1,14 @@
 import { ToDo as ToDoDto } from '../dtos/ToDo';
 
 export class ToDo {
-    static getAll() {
-        return new Promise<ToDoDto[]>((resolve) => {
-            setTimeout(() => {
-                const result: ToDoDto[] = [
-                    { id: 2312, userId: 1, title: 'Hello world 1!' },
-                    { id: 4131, userId: 1, title: 'Hello world 2!' },
-                    { id: 7463, userId: 1, title: 'Hello world 3!' },
-                    { id: 4267, userId: 1, title: 'Hello world 4!' }
-                ];
+    static async getAll(): Promise<ToDoDto[]> {
+        const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=5');
+        
+        const todos: ToDoDto[] = await response.json();
 
-                resolve(result);
-            }, 2345);
-        });
+        todos.sort((a, b) => b.id > a.id ? 1 : -1);
+
+        return todos;
     }
 
     static create() {}

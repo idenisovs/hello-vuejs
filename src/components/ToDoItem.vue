@@ -17,7 +17,7 @@
             <div class="d-flex align-center">
                 <v-checkbox density="compact" hide-details class="flex-grow-0 mr-4" color="primary" v-model="todo.completed"></v-checkbox>
                 <span class="flex-grow-1" :class="{ 'text-decoration-line-through': todo.completed }">
-                    {{idx}}. {{todo.title}}
+                    {{todo.id}}. {{todo.title}}
                 </span>
                 <span class="d-flex">
                     <v-btn icon="edit" variant="plain" size="small" />
