@@ -1,5 +1,17 @@
+#app {
+    .v-toolbar {
+        &.v-theme--dark {
+            filter: grayscale(.95);
+        }
+    }
+}
+
 .todo-app {
     background-color: #f1f1f1 !important;
+
+    &.v-theme--dark {
+        background-image: url(darkbg.jpg) !important;
+    }
 
     .todo-main {
         margin: 30px 100px 15px 100px;
