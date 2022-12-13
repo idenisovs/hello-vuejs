@@ -1,5 +1,4 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
     import { ToDo } from '../dtos';
 
     const props = defineProps<{
@@ -7,31 +6,17 @@
         todo: ToDo;
     }>();
 
-    const emit = defineEmits<{
+    defineEmits<{
         (e: 'remove', item: ToDo): void;
-        (e: 'select', item: ToDo): void;
-        (e: 'deselect', item: ToDo): void;
     }>();
-
-    const isSelected = ref(false);
-
-    function handleCheckboxClick() {
-        isSelected.value = !isSelected.value;
-
-        if (isSelected.value) {
-            emit('select', props.todo);
-        } else {
-            emit('deselect', props.todo);
-        }
-    }
 </script>
 
 <template>
     <v-card class="mb-4">
         <v-card-text>
             <div class="d-flex align-center">
-                <v-checkbox density="compact" hide-details class="flex-grow-0 mr-4" color="primary" @click="handleCheckboxClick"></v-checkbox>
-                <span class="flex-grow-1" :class="{ 'text-decoration-line-through': isSelected }">
+                <v-checkbox density="compact" hide-details class="flex-grow-0 mr-4" color="primary" v-model="todo.completed"></v-checkbox>
+                <span class="flex-grow-1" :class="{ 'text-decoration-line-through': todo.completed }">
                     {{idx}}. {{todo.title}}
                 </span>
                 <span class="d-flex">

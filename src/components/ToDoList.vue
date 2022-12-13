@@ -13,13 +13,11 @@
         :key="item.id"
         :idx="todos.list.length - index" 
         :todo="item" 
-        @select="todos.select"
-        @deselect="todos.deselect"
         @remove="todos.remove"
     />
 
-    <v-btn block color="primary" class="delete-btn mt-10" v-if="todos.selected.length > 1" @click="todos.removeSelected">
-        Delete selected ({{todos.selected.length}})
+    <v-btn block color="primary" class="delete-btn mt-10" v-if="todos.selected > 1" @click="todos.removeSelected">
+        Delete selected ({{todos.selected}})
     </v-btn>
 </template>
 
