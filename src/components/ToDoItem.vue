@@ -28,13 +28,32 @@
 
         emit('changes', changedToDo);
     }
+
+    function changeToDoTitle(event: Event) {
+        const target = event.target as HTMLInputElement;
+
+        const changedToDo = {
+            ...props.todo
+        };
+
+        changedToDo.title = target.value;
+
+        emit('changes', changedToDo);
+    }
 </script>
 
 <template>
     <v-card class="mb-4">
         <v-card-text>
             <div class="d-flex align-center">
-                <v-checkbox density="compact" hide-details class="flex-grow-0 mr-4" color="primary" :model-value="todo.completed" @click="toggleToDoCompleted()"></v-checkbox>
+                <v-checkbox 
+                    density="compact" 
+                    hide-details class="flex-grow-0 mr-4" 
+                    color="primary" 
+                    :model-value="todo.completed" 
+                    @click="toggleToDoCompleted()"
+                >
+                </v-checkbox>
                 
                 <v-text-field 
                     v-if="isEditMode" 
@@ -42,7 +61,8 @@
                     variant="filled" 
                     hide-details 
                     single-line
-                    v-model="todo.title"
+                    :model-value="todo.title"
+                    @input="changeToDoTitle"
                     @keyup.enter="toggleEditMode"
                     
                 >
