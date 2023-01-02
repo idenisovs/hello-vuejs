@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
-
   import { ToDoAdd, ToDoList, NavBar } from './components';
 
   import { useSettingsStore, useToDoListStore } from './store';
